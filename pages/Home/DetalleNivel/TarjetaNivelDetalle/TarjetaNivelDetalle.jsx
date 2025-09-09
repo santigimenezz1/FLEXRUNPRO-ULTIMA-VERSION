@@ -48,9 +48,7 @@ const TarjetaNivelDetalle = ({ setModalVisible, nivel, tiempo, navigation, ejerc
                             <Text style={{ fontSize: 32, fontWeight: 'bold', color: 'white' }}>{numero}</Text>
                         </View>
                         <View style={{ width: RFValue(150) }}>
-                            <Text style={styles.text}>{obtenerNombreEjercicio()}</Text>
-                            <Text style={styles.texth2}>{ejercicio.duracion}</Text>
-                            
+                            <Text style={styles.text}>{obtenerNombreEjercicio()}</Text>                            
                         </View>
                     </View>
 

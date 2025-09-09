@@ -164,13 +164,12 @@ const Perfil = () => {
 
   return (
   <ImageBackground
-    source={{ uri: 'https://res.cloudinary.com/dcf9eqqgt/image/upload/v1751020771/Dise%C3%B1o_sin_t%C3%ADtulo_68_dhzq2k.png' }}
+    source={{ uri: 'https://res.cloudinary.com/dcf9eqqgt/image/upload/v1757170968/Dise%C3%B1o_sin_t%C3%ADtulo_68_dhzq2k_1_xapsbn.png' }}
     style={{ flex: 1 }}
     imageStyle={{ opacity: 1 }}
   >
     <View style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.5)', padding: 20 }}>
       <NavBar />
-
       {idiomaActual === "espana" && <Text style={{ color: "white", fontFamily: "NunitoSans_700Bold", letterSpacing: 1, textAlign:"center", fontSize:20 }}>Cuenta activa</Text>}
       {idiomaActual === "italia" && <Text style={{ color: "white", fontFamily: "NunitoSans_700Bold", letterSpacing: 1, textAlign:"center", fontSize:20 }}>Account attivo</Text>}
       {idiomaActual === "francia" && <Text style={{ color: "white", fontFamily: "NunitoSans_700Bold", letterSpacing: 1, textAlign:"center", fontSize:20 }}>Compte actif</Text>}
@@ -207,10 +206,6 @@ const Perfil = () => {
       </View>
     </View>
   </ImageBackground>
-
-
-
-
 );
 
 };

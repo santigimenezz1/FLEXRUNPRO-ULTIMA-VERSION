@@ -1,18 +1,17 @@
-// TarjetaNivel.jsx
 import { ImageBackground, Pressable, Text, View } from "react-native";
 import { useContext } from "react";
 import { CartContext } from "../../Context/Context.jsx";
 import styles from "./TarjetaNivelFittPro.js";
 
-const TarjetaNivelFittPro = ({ data, nivel, tiempo, navigation, nivelNombre, rutaNivel }) => {
-  const { closed, idiomaActual } = useContext(CartContext);
+const TarjetaNivelFittPro = ({ data, nivelNombre, navigation, rutaNivel, fotoo }) => {
+  const { idiomaActual } = useContext(CartContext);
 
   // Traducciones de "Nivel"
   const traduccionesNivel = {
     espana: "Nivel",
     italia: "Livello",
     francia: "Niveau",
-    bandera: "Stufe", // puedes ajustar si "bandera" tiene un idioma real
+    bandera: "Stufe",
     inglaterra: "Level",
     estadosUnidos: "Level",
     paisesBajos: "Niveau",
@@ -22,22 +21,19 @@ const TarjetaNivelFittPro = ({ data, nivel, tiempo, navigation, nivelNombre, rut
   // Obtener palabra traducida
   const palabraNivel = traduccionesNivel[idiomaActual] || "Nivel";
 
-  // Separar "Nivel1" en "Nivel" y "1"
+  // Separar "nivel1" en número
   const match = nivelNombre.match(/^([a-zA-Z]+)(\d+)$/);
   const numero = match ? match[2] : "";
-  
-  // Construir texto final traducido
+
+  // Texto final traducido
   const nivelNombreTraducido = `${palabraNivel} ${numero}`;
 
-  console.log({ data });
-  console.log(rutaNivel);
-  console.log({ nivelNombre });
-
+  console.log("Imagen recibida:", fotoo);
 
   return (
     <ImageBackground
       source={{
-        uri: data.data.imagenTarjetaNivel
+        uri: fotoo || "https://via.placeholder.com/400x200.png?text=Sin+Imagen", // fallback
       }}
       style={styles.fondoImagen}
       imageStyle={{ borderRadius: 12 }}
@@ -57,9 +53,7 @@ const TarjetaNivelFittPro = ({ data, nivel, tiempo, navigation, nivelNombre, rut
       >
         {/* Texto centrado */}
         <View style={styles.centroTexto}>
-          <Text style={styles.text}>
-            {nivelNombreTraducido}
-          </Text>
+          <Text style={styles.text}>{nivelNombreTraducido}</Text>
         </View>
       </Pressable>
     </ImageBackground>

@@ -185,9 +185,9 @@ const Registro = ({ navigation }) => {
     <View style={styles.container__inicioSesion}>
       <Image
         width={230}
-        height={85}
+        height={150}
         source={{
-          uri: 'https://res.cloudinary.com/dcf9eqqgt/image/upload/v1750757980/Flexrun_pro_1_ab4wmw.png'
+          uri: 'https://res.cloudinary.com/dcf9eqqgt/image/upload/v1757172589/f_5_oehxov.png'
         }}
       />
 

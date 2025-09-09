@@ -49,10 +49,10 @@ const LoginUsuarios = ({ navigation }) => {
     <View style={styles.container__loginUsuarios}>
       <Image
         width={250}
-        height={90}
+        height={150}
         source={{
           uri:
-            "https://res.cloudinary.com/dcf9eqqgt/image/upload/v1750757980/Flexrun_pro_1_ab4wmw.png",
+            "https://res.cloudinary.com/dcf9eqqgt/image/upload/v1757172589/f_5_oehxov.png",
         }}
       />
 

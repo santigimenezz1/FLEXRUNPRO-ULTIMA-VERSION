@@ -79,7 +79,7 @@ const Home = ({ navigation }) => {
     );
   }
 
-  const ordenPersonalizado = ["Calentamiento", "Conos sin pelota", "Conos con pelota", "Escalera", "Mixtos"];
+  const ordenPersonalizado = ["Calentamiento", "Conos sin pelota", "Conos con pelota", "Escalera", "Mixtos", "Estiramiento"];
 
   const nivelesOrdenados = niveles
     .filter((nivel) => ordenPersonalizado.includes(nivel.data.nombre))
