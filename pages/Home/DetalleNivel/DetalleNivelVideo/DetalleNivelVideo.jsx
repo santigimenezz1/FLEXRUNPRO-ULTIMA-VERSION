@@ -46,18 +46,18 @@ const DetalleNivelVideo = () => {
       case "espana":
         return ejercicio.videoUrl;
       case "italia":
-        return ejercicio.videoUrl;
+        return ejercicio.videoUrlItalia;
       case "francia":
-        return ejercicio.videoUrl;
+        return ejercicio.videoUrlFrancia;
       case "estadosUnidos":
       case "inglaterra":
-        return ejercicio.videoUrl;
+        return ejercicio.videoUrlEstadosUnidos;
       case "bandera":
-        return ejercicio.videoUrl;
+        return ejercicio.videoUrlAlemania;
       case "paisesBajos":
-        return ejercicio.videoUrl;
+        return ejercicio.videoUrlPaisesBajos;
       case "portugal":
-        return ejercicio.videoUrl;
+        return ejercicio.videoUrlPortugal;
       default:
         return ejercicio.videoUrl;
     }
@@ -67,7 +67,7 @@ const DetalleNivelVideo = () => {
     <SafeAreaView style={{ flex: 1 }}>
       <ImageBackground
         source={{
-          uri: "https://res.cloudinary.com/dcf9eqqgt/image/upload/v1751020771/Dise%C3%B1o_sin_t%C3%ADtulo_68_dhzq2k.png",
+          uri: "https://res.cloudinary.com/dcf9eqqgt/image/upload/f_auto,q_auto,w_600/v1751020771/Dise%C3%B1o_sin_t%C3%ADtulo_68_dhzq2k.png",
         }}
         style={{ flex: 1, opacity:1 }}
         resizeMode="cover"

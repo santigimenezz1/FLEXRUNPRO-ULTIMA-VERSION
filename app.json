@@ -2,7 +2,7 @@
   "expo": {
     "name": "FLEXRUN PRO",
     "slug": "fittpro",
-    "version": "1.0.22",
+    "version": "1.0.24",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -26,7 +26,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.santiagofittlline.fittlline",
+      "package": "com.fittpro.fittpro",
       "permissions": [],
       "googleServicesFile": "./google-services.json",
       "jsEngine": "hermes",

@@ -1,12 +1,12 @@
 import 'react-native-gesture-handler';
-import React, { useEffect, useContext } from 'react';
+import React, { useCallback, useContext } from 'react';
 import { Alert, Text, Image, View } from 'react-native';
 import * as Linking from 'expo-linking';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeNavigator from './pages/Home/HomeNavigator.js';
 import Perfil from './pages/Perfil/Perfil.jsx';
-import AppLoading from 'expo-app-loading';
+import * as SplashScreen from 'expo-splash-screen';
 import { useFonts, NunitoSans_400Regular, NunitoSans_700Bold } from '@expo-google-fonts/nunito-sans';
 import { Feather, FontAwesome5 } from '@expo/vector-icons';
 import { Octicons } from '@expo/vector-icons';
@@ -20,12 +20,13 @@ import AntDesign from '@expo/vector-icons/AntDesign';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 
+// Evitar que el splash se oculte automáticamente
+SplashScreen.preventAutoHideAsync();
 
 const Tab = createBottomTabNavigator();
 
 function MyTabs() {
-  const { closed, setClosed, userRegistro, setUserOnline, userOnline, idiomaActual } = useContext(CartContext);
- 
+  const { idiomaActual } = useContext(CartContext);
 
   return (
     <Tab.Navigator
@@ -47,9 +48,7 @@ function MyTabs() {
             else if (idiomaActual === 'francia') label = 'Exercices';
             else if (idiomaActual === 'bandera') label = 'Übungen';
             else if (idiomaActual === 'paisesBajos') label = 'Oefeningen';
-            else if (idiomaActual === 'inglaterra') label = 'Exercises';
-            else if (idiomaActual === 'estadosUnidos') label = 'Exercises';
-
+            else if (idiomaActual === 'inglaterra' || idiomaActual === 'estadosUnidos') label = 'Exercises';
             else if (idiomaActual === 'portugal') label = 'Exercícios';
           } else if (route.name === 'Lenguaje') {
             if (idiomaActual === 'espana') label = 'Lenguaje';
@@ -57,33 +56,32 @@ function MyTabs() {
             else if (idiomaActual === 'francia') label = 'Langage';
             else if (idiomaActual === 'bandera') label = 'Sprache';
             else if (idiomaActual === 'paisesBajos') label = 'Taal';
-            else if (idiomaActual === 'inglaterra') label = 'Language';
-            else if (idiomaActual === 'estadosUnidos') label = 'Language';
-
+            else if (idiomaActual === 'inglaterra' || idiomaActual === 'estadosUnidos') label = 'Language';
             else if (idiomaActual === 'portugal') label = 'Linguagem';
           } else if (route.name === 'Perfil') {
             if (idiomaActual === 'espana') label = 'Cuenta';
             else if (idiomaActual === 'italia') label = 'Account';
             else if (idiomaActual === 'francia') label = 'Compte';
             else if (idiomaActual === 'bandera') label = 'Konto';
-            else if (idiomaActual === 'paisesBajos') label = 'Account';
-            else if (idiomaActual === 'inglaterra') label = 'Account';
-            else if (idiomaActual === 'estadosUnidos') label = 'Account';
+            else if (idiomaActual === 'paisesBajos' || idiomaActual === 'inglaterra' || idiomaActual === 'estadosUnidos')
+              label = 'Account';
             else if (idiomaActual === 'portugal') label = 'Conta';
           }
 
           return (
-            <Text style={{
-              color: focused ? '#34cee6' : 'white',
-              fontSize: RFValue(13),
-              fontFamily: 'Roboto_400Regular',
-              letterSpacing: 1,
-              textAlign: 'center',
-            }}>
+            <Text
+              style={{
+                color: focused ? '#34cee6' : 'white',
+                fontSize: RFValue(13),
+                fontFamily: 'Roboto_400Regular',
+                letterSpacing: 1,
+                textAlign: 'center',
+              }}
+            >
               {label}
             </Text>
           );
-        }
+        },
       })}
     >
       <Tab.Screen
@@ -92,7 +90,7 @@ function MyTabs() {
         options={{
           tabBarIcon: ({ focused }) => (
             <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-<AntDesign name="playcircleo" size={24} color={focused ? '#34cee6' : 'white'} />
+              <AntDesign name="playcircleo" size={24} color={focused ? '#34cee6' : 'white'} />
             </View>
           ),
         }}
@@ -104,7 +102,9 @@ function MyTabs() {
           tabBarIcon: () => (
             <View style={{ alignItems: 'center', justifyContent: 'center' }}>
               <Image
-                source={{ uri: 'https://res.cloudinary.com/dcf9eqqgt/image/upload/v1746867672/planeta-tierra_m0mpha.png' }}
+                source={{
+                  uri: 'https://res.cloudinary.com/dcf9eqqgt/image/upload/v1746867672/planeta-tierra_m0mpha.png',
+                }}
                 style={{ width: 30, height: 30 }}
                 resizeMode="contain"
               />
@@ -133,23 +133,29 @@ function MainComponent() {
 }
 
 export default function App() {
-  let [fontsLoaded] = useFonts({
+  const [fontsLoaded] = useFonts({
     NunitoSans_400Regular,
     NunitoSans_700Bold,
     Roboto_400Regular,
   });
 
-  
+  const onLayoutRootView = useCallback(async () => {
+    if (fontsLoaded) {
+      await SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded]);
 
   if (!fontsLoaded) {
-    return <AppLoading />;
+    return null; // Se muestra el splash hasta que las fuentes carguen
   }
 
   return (
     <GlobalContext>
       <NavigationContainer>
-        <MainComponent />
-        <FlashMessage position="center" />
+        <View style={{ flex: 1 }} onLayout={onLayoutRootView}>
+          <MainComponent />
+          <FlashMessage position="center" />
+        </View>
       </NavigationContainer>
     </GlobalContext>
   );

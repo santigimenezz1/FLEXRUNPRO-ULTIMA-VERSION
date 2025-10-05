@@ -16,7 +16,7 @@ const DetalleNivel = () => {
 
   return (
     <ImageBackground
-      source={{ uri: 'https://res.cloudinary.com/dcf9eqqgt/image/upload/v1757168484/Dise%C3%B1o_sin_t%C3%ADtulo_18_s89bj4.png' }}
+      source={{ uri: 'https://res.cloudinary.com/dcf9eqqgt/image/upload/f_auto,q_auto,w_600/v1757168484/Dise%C3%B1o_sin_t%C3%ADtulo_18_s89bj4.png' }}
       style={styles.imageBackground}
       imageStyle={{ opacity: 1 }}
     >

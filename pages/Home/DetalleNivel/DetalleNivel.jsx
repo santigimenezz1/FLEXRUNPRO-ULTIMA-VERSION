@@ -23,7 +23,7 @@ const DetalleNivel = () => {
     <View style={styles.container}>
       <ImageBackground
         source={{
-          uri: 'https://res.cloudinary.com/dcf9eqqgt/image/upload/v1756570556/Captura_de_pantalla_2025-08-30_181303_ohwsrk.png',
+          uri: 'https://res.cloudinary.com/dcf9eqqgt/image/upload/f_auto,q_auto,w_600/v1756570556/Captura_de_pantalla_2025-08-30_181303_ohwsrk.png',
         }}
         style={styles.backgroundImage}
         imageStyle={styles.backgroundImageStyle}
